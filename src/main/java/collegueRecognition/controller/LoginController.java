@@ -1,26 +1,37 @@
 package collegueRecognition.controller;
 
 import collegueRecognition.data.UserRepository;
-import collegueRecognition.entities.LoginUser;
 import collegueRecognition.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+//@SessionAttributes("user")
 public class LoginController {
 
     @Autowired
     private UserRepository repository;
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @PostMapping("/logMeIn")
-    public String login(@ModelAttribute LoginUser loginUser) {
-        User resultingUser = repository.findByUserNameAndPass(loginUser.getUserName(), loginUser.getPass());
+    public String login(@ModelAttribute User user, Model model) {
+        User resultingUser = repository.findByUserNameAndPass(user.getUserName(), user.getPass());
         if(resultingUser != null) {
+            user = resultingUser;
             return "loggedIn";
         } else {
-            return "loginError";
+            model.addAttribute("loginResult", "Error!");
+            model.addAttribute("message", "The username or password that you have entered is not valid!");
+            return "login";
         }
     }
 }

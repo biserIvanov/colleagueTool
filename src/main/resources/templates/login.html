@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>Colleague recognition</title>
@@ -62,7 +62,7 @@
                     <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
@@ -116,7 +116,8 @@
                 </div>
 
                 <div class="alert alert-danger">
-                    <strong>Error!</strong> The username or password that you have entered is not valid!
+                    <strong th:text="${loginResult}"/>
+                    <span th:text="${message}" />
                 </div>
 
                 <div class="container-login100-form-btn">
