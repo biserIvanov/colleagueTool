@@ -20,10 +20,7 @@ public class LoginController {
         if(resultingUser != null) {
             return "loggedIn";
         } else {
-            loginUser.setUserName("NO SUCH USER");
-            loginUser.setPass("NO SUCH PASS");
-            return "loggedIn";
+            return "loginError";
         }
-
     }
 }

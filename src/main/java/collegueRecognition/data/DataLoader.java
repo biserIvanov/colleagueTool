@@ -14,7 +14,6 @@ public class DataLoader implements ApplicationRunner {
 
 
     public void run(ApplicationArguments args) {
-        System.out.println("#######################");
         userRepository.deleteAll();
 
         // save a couple of customers
