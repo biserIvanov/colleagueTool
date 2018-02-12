@@ -115,7 +115,7 @@
                     </div>
                 </div>
 
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" th:if="${loginResult}">
                     <strong th:text="${loginResult}"/>
                     <span th:text="${message}" />
                 </div>
@@ -125,7 +125,6 @@
                         Login
                     </button>
                 </div>
-
             </form>
         </div>
     </div>
