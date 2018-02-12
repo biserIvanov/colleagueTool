@@ -8,25 +8,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
-//@SessionAttributes("user")
 public class LoginController {
 
     @Autowired
     private UserRepository repository;
 
     @GetMapping("/login")
-    public String login() {
+    public String login(HttpServletRequest request, Model model) {
+        User user = (User) request.getSession().getAttribute("loggedUser");
+        if(user != null) {
+            model.addAttribute("loggedUser", user);
+            return "loggedIn";
+        }
         return "login";
     }
 
     @PostMapping("/logMeIn")
-    public String login(@ModelAttribute User user, Model model) {
+    public String login(@ModelAttribute User user, Model model, HttpServletRequest request) {
         User resultingUser = repository.findByUserNameAndPass(user.getUserName(), user.getPass());
         if(resultingUser != null) {
-            user = resultingUser;
+            request.getSession().setAttribute("loggedUser", resultingUser);
+            model.addAttribute("loggedUser", resultingUser);
             return "loggedIn";
         } else {
             model.addAttribute("loginResult", "Error!");
