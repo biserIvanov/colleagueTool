@@ -40,4 +40,14 @@ public class LoginController {
             return "login";
         }
     }
+
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, Model model) {
+        User user = (User) request.getSession().getAttribute("loggedUser");
+        if(user != null) {
+            request.getSession().setAttribute("loggedUser", null);
+        }
+        return "login";
+    }
 }
