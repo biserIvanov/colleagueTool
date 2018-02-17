@@ -17,7 +17,7 @@ public class LoginController {
     @Autowired
     private UserRepository repository;
 
-    @GetMapping("/login")
+    @GetMapping(value = {"/login", "/loggedIn", "logMeIn"})
     public String login(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("loggedUser");
         if(user != null) {
