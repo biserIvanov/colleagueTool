@@ -10,14 +10,46 @@
     <title>Colleague recognition</title>
 
 
-
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-
+    <style>
+        body{
+            background: #EFF7FE;
+            padding-top: 15px;
+        }
+        .main-section{
+            border:1px solid #138496;
+            background-color: #fff;
+        }
+        .profile-header{
+            background-color: #17a2b8;
+            height:150px;
+        }
+        .user-detail{
+            margin:-50px 0px 30px 0px;
+        }
+        .user-detail img{
+            height:100px;
+            width:100px;
+        }
+        .user-detail h5{
+            margin:15px 0px 5px 0px;
+        }
+        .user-social-detail{
+            padding:15px 0px;
+            background-color: #17a2b8;
+        }
+        .user-social-detail a i{
+            color:#fff;
+            font-size:23px;
+            padding: 0px 5px;
+        }
+    </style>
 
     <!-- Bootstrap core CSS -->
 
@@ -34,60 +66,92 @@
 </head>
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto nav nav-pills">
-                <li class="nav-item userInfo dropdown">
-                    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Colleague Recognition Tool</a>
-                    <div class="dropdown-menu">
-                        <a href="#">Vote</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#">Statistics</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#">User Data</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto nav nav-pills">
+                    <li class="nav-item userInfo dropdown">
+                        <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Colleague Recognition Tool</a>
+                        <div class="dropdown-menu">
+                            <a href="#">Vote</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#">Statistics</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#">User Data</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-                <li class="nav-item userInfo dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" th:text="${loggedUser.userName}">
-                        <span class="sr-only">(current)</span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="/myProfile">Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#">Security</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#">Preferences</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="/logout">Logout</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item userInfo dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" th:text="${loggedUser.userName}">
+                            <span class="sr-only">(current)</span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="/myProfile">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#">Security</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#">Preferences</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br/>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+                </div>
+                <div class="row user-detail">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <img src="/img/man.png" class="rounded-circle img-thumbnail"/>
+                        <h5 th:text="${loggedUser.firstName} + ' ' + ${loggedUser.lastName}"></h5>
+                        <p th:text="${loggedUser.role}"></p>
+
+                        <hr/>
+                        <p th:text="'UserName: ' + ${loggedUser.userName}"></p>
+                        <p th:text="'email: ' + ${loggedUser.email}"></p>
+
+                        <hr/>
+                        <span>Skills:</span>
+                        <a href="#" class="btn btn-success btn-sm">Java</a>
+                        <a href="#" class="btn btn-info btn-sm">Javascript</a>
+
+                        <hr/>
+                        <span th:text="${loggedUser.shortIntro}"></span>
+                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> Sofia, Bulgaria.</p>
                     </div>
-                </li>
-            </ul>
+                </div>
+                <div class="row user-social-detail">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
-
-
-<h1>My Profile</h1>
-<p th:text="'logged in as: ' + ${loggedUser.userName}" />
-<p th:text="'password: ' + ${loggedUser.pass}" />
-thats it
 </body>
 </html>

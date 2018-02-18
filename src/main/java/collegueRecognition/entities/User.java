@@ -13,19 +13,25 @@ public class User {
     public String firstName;
     public String lastName;
 
+    public byte[] profilePic;
+    public String role;
     public String department;
+    public String[] skills;
+    public String shortIntro;
     public String email;
     private boolean rememberMe;
 
     public User() {}
 
-    public User(String userName, String pass, String firstName, String lastName, String department, String email) {
+    public User(String userName, String pass, String firstName, String lastName, String department, String email, String role, String shortIntro) {
         this.userName = userName;
         this.pass = pass;
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
         this.email = email;
+        this.role = role;
+        this.shortIntro = shortIntro;
     }
 
     @Override

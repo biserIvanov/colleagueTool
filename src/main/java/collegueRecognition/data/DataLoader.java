@@ -18,7 +18,7 @@ public class DataLoader implements ApplicationRunner {
 
         // save a couple of customers
         userRepository.save(new User("biso", "biso123", "Biser", "Ivanov",
-                "Globalization", "biserivanov08@gmail.con"));
+                "Globalization", "biserivanov08@gmail.con", "Software Engineer", "Love sports, music and programming."));
     }
 }
 
