@@ -6,6 +6,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -15,10 +18,12 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
         userRepository.deleteAll();
-
+        List<String> skills = new ArrayList<>();
+        skills.add("Java");
+        skills.add("JavaScript");
         // save a couple of customers
         userRepository.save(new User("biso", "biso123", "Biser", "Ivanov",
-                "Globalization", "biserivanov08@gmail.con", "Software Engineer", "Love sports, music and programming."));
+                "Globalization", "biserivanov08@gmail.con", "Software Engineer", "Love sports, music and programming.", skills));
     }
 }
 

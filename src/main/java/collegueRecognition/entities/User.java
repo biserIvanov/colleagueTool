@@ -3,6 +3,8 @@ package collegueRecognition.entities;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 public class User {
 
     @Id
@@ -16,14 +18,14 @@ public class User {
     public byte[] profilePic;
     public String role;
     public String department;
-    public String[] skills;
+    public List<String> skills;
     public String shortIntro;
     public String email;
     private boolean rememberMe;
 
     public User() {}
 
-    public User(String userName, String pass, String firstName, String lastName, String department, String email, String role, String shortIntro) {
+    public User(String userName, String pass, String firstName, String lastName, String department, String email, String role, String shortIntro, List<String> skills) {
         this.userName = userName;
         this.pass = pass;
         this.firstName = firstName;
@@ -32,6 +34,7 @@ public class User {
         this.email = email;
         this.role = role;
         this.shortIntro = shortIntro;
+        this.skills = skills;
     }
 
     @Override

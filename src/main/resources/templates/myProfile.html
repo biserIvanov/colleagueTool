@@ -135,8 +135,7 @@
 
                         <hr/>
                         <span>Skills:</span>
-                        <a href="#" class="btn btn-success btn-sm">Java</a>
-                        <a href="#" class="btn btn-info btn-sm">Javascript</a>
+                        <a href="#" class="btn btn-success btn-sm" th:each="skill : ${loggedUser.skills}" th:text="${skill}"></a>
 
                         <hr/>
                         <span th:text="${loggedUser.shortIntro}"></span>
