@@ -22,10 +22,11 @@ public class User {
     public String shortIntro;
     public String email;
     private boolean rememberMe;
+    public List<Vote> votes;
 
     public User() {}
 
-    public User(String userName, String pass, String firstName, String lastName, String department, String email, String role, String shortIntro, List<String> skills) {
+    public User(String userName, String pass, String firstName, String lastName, String department, String email, String role, String shortIntro, List<String> skills, List<Vote> votes) {
         this.userName = userName;
         this.pass = pass;
         this.firstName = firstName;
@@ -35,6 +36,7 @@ public class User {
         this.role = role;
         this.shortIntro = shortIntro;
         this.skills = skills;
+        this.votes = votes;
     }
 
     @Override
