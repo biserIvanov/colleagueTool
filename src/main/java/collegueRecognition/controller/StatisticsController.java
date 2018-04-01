@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class UserInfoController {
+public class StatisticsController {
 
-    @GetMapping(value = {"/myProfile"})
-    public String login(HttpServletRequest request, Model model) {
+    @GetMapping(value = {"/statistics"})
+    public String statistics(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("loggedUser");
         if(user != null) {
             model.addAttribute("loggedUser", user);
-            return "myProfile";
+            return "statistics";
         }
         return "login";
-    }   
-
+    }
 }

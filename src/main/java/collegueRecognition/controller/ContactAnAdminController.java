@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class UserInfoController {
+public class ContactAnAdminController {
 
-    @GetMapping(value = {"/myProfile"})
-    public String login(HttpServletRequest request, Model model) {
+    @GetMapping(value = {"/contactAnAdmin"})
+    public String viewUserScores(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("loggedUser");
         if(user != null) {
             model.addAttribute("loggedUser", user);
-            return "myProfile";
+            return "contactAnAdmin";
         }
         return "login";
-    }   
-
+    }
 }
