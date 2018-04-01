@@ -18,6 +18,5 @@ public class UserInfoController {
             return "myProfile";
         }
         return "login";
-    }   
-
+    }
 }
