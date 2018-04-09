@@ -26,8 +26,8 @@ public class DataLoader implements ApplicationRunner {
         bisoSkills.add("JavaScript");
 
         List<Vote> bisoVotes = new ArrayList<>();
-        bisoVotes.add(new Vote("ivan", "Very helpful!", new Date()));
-        bisoVotes.add(new Vote("dragan", "Keeps it real!", new Date()));
+        bisoVotes.add(new Vote("ivan", "Very helpful!"));
+        bisoVotes.add(new Vote("dragan", "Keeps it real!"));
 
         // save a couple of customers
         userRepository.save(new User("biso", "biso123", "Biser", "Ivanov",
@@ -39,7 +39,7 @@ public class DataLoader implements ApplicationRunner {
         ivanSkills.add("HTML");
 
         List<Vote> ivanVotes = new ArrayList<>();
-        ivanVotes.add(new Vote("dragan", "Keeps it real!", new Date()));
+        ivanVotes.add(new Vote("dragan", "Keeps it real!"));
 
         // save a couple of customers
         userRepository.save(new User("ivan", "ivan123", "Ivan", "Ivanov",

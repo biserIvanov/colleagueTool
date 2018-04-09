@@ -10,10 +10,11 @@ public class Vote {
 
     private Date createdDate = new Date();
 
-    public Vote(String userName, String comment, Date createdDate) {
+    public  Vote() {}
+
+    public Vote(String userName, String comment) {
         this.userName = userName;
         this.comment = comment;
-        this.createdDate = createdDate;
     }
 
     public String getUserName() {
