@@ -8,13 +8,15 @@
     <meta name="author" content=""/>
 
     <title>Colleague recognition</title>
-
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel = "stylesheet"/>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link href="css/simple-sidebar.css" rel="stylesheet"/>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
@@ -31,7 +33,48 @@
             .userInfo {
                 margin-left:30px;
             }
+
+            #menu-toggle {
+                margin-top: 330px;
+            }
         </style>
+    <script>
+        $(function() {
+            $('#userName').autocomplete({
+            source: function( request, response ) {
+                var search = {}
+                search["username"] = $("#userName").val();
+                $.ajax({
+                  type: "POST",
+                  contentType: "application/json",
+                  url: "/autocomplete/username",
+                  dataType: "json",
+                  cache: false,
+                  data: JSON.stringify(search),
+                  success: function( data ) {
+                    var listOfSuggestions = [];
+                    data.result.forEach(function(userObj) {
+                        listOfSuggestions.push(userObj.userName);
+                    });
+                    response(listOfSuggestions);
+                  }
+                });
+            },
+            minLength: 1,
+            select: function( event, ui ) {
+                console.log( ui.item ?
+                  "Selected: " + ui.item.label :
+                  "Nothing selected, input was " + this.value);
+            },
+            open: function() {
+                $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+            },
+            close: function() {
+                $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+            }
+        });
+    });
+    </script>
 </head>
 <body>
 <!-- Navigation -->
@@ -111,9 +154,19 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">
-            <h1>User scores content here</h1>
-            <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-            <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+            <h1>View user scores</h1>
+            <form method="POST" action="/viewUserScores">
+                <div class="form-group">
+                    <label for="userName">Enter userName:</label>
+                    <input class="form-control" name="userName" id="userName" placeholder="Enter userName"/>
+                    <small id="emailHelp" class="form-text text-muted">Type first couple letters.</small>
+                </div>
+                <div class="alert alert-danger" th:if="${voteResult}">
+                    <strong th:text="${voteResult}"/>
+                    <span th:text="${message}" />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
         </div>
     </div>
@@ -123,7 +176,6 @@
 <!-- /#wrapper -->
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Menu Toggle Script -->
