@@ -14,10 +14,11 @@ public class User {
     public String pass;
     public String firstName;
     public String lastName;
-
+    //@TODO: fix parsing these fields during registration
     public byte[] profilePic;
     public String role;
     public String department;
+    public String organization;
     public List<String> skills;
     public String shortIntro;
     public String email;
