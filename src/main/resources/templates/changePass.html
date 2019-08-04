@@ -8,30 +8,29 @@
     <meta name="author" content=""/>
 
     <title>Colleague recognition</title>
-
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel = "stylesheet"/>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
     <link href="css/simple-sidebar.css" rel="stylesheet"/>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-
-
-    <!-- Bootstrap core CSS -->
-
-
-    <!-- Custom styles for this template -->
     <link href="css/small-business.css" rel="stylesheet"/>
-    <!--<script src="vendor/jquery/jquery.min.js"></script>-->
-    <!--<script src="js/bootstrap.min.js"></script>-->
     <style>
             .userInfo {
                 margin-left:30px;
             }
-        </style>
+
+            #changePass {
+                margin: 100px;
+            }
+    </style>
 </head>
 <body>
 <!-- Navigation -->
@@ -52,12 +51,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
@@ -81,59 +74,48 @@
     </div>
 </nav>
 
+<div class="card bg-light" id="changePass">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center registerHeading">Create Account</h4>
+        <form method="POST" action="/changePass">
 
-<div id="wrapper" class="toggled">
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input name="pass" class="form-control" placeholder="Old password*" type="password" />
+            </div>
 
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    Menu
-                </a>
-            </li>
-            <li>
-                <a href="/vote">Vote</a>
-            </li>
-            <li>
-                <a href="/statistics">Statistics</a>
-            </li>
-            <li>
-                <a href="/viewUserScores">View User Scores</a>
-            </li>
-            <li>
-                <a href="/help">Help</a>
-            </li>
-            <li>
-                <a href="/contactAnAdmin">Contact an Admin</a>
-            </li>
-        </ul>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input name="pass" class="form-control" placeholder="New password*" type="password" />
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input class="form-control" placeholder="Repeat new password*" type="password" />
+            </div> <!-- form-group// -->
+            <br />
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit"> Change Password</button>
+            </div> <!-- form-group// -->
+        </form>
+    </article>
+</div> <!-- card.// -->
+<div id="dropDownSelect1"></div>
+
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; biSoft 2018</p>
     </div>
-    <!-- /#sidebar-wrapper -->
+    <!-- /.container -->
+</footer>
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <h1>Thank you for your vote!</h1>
-            <h2 th:text="${'You have just voted for: ' + userName}"></h2>
-            <a href="#menu-toggle" class="btn btn-secondary" style="margin-top: 220px;" id="menu-toggle">Toggle Menu</a>
-        </div>
-    </div>
-    <!-- /#page-content-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
 </body>
 </html>
