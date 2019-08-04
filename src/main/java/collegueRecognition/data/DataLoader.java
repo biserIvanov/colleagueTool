@@ -37,7 +37,7 @@ public class DataLoader implements ApplicationRunner {
 
         // save a couple of customers
         userRepository.save(new User("biso", "biso123", "Biser", "Ivanov",
-                "Globalization", "biserivanov08@gmail.con", "Software Engineer", "Love sports, music and programming.", bisoSkills, bisoVotes));
+                "Globalization", "Trading 212", "biserivanov08@gmail.con", "Software Engineer", "Love sports, music and programming.", bisoSkills, bisoVotes));
 
         List<String> ivanSkills = new ArrayList<>();
         ivanSkills.add("Java");
@@ -53,16 +53,16 @@ public class DataLoader implements ApplicationRunner {
 
         // save a couple of customers
         userRepository.save(new User("ivan", "ivan123", "Ivan", "Ivanov",
-                "Globalization", "ivanivanov08@gmail.con", "Senior Software Engineer", "Love sports, music, programming and rakia.", ivanSkills, ivanVotes));
+                "Globalization", "Trading 212", "ivanivanov08@gmail.con", "Senior Software Engineer", "Love sports, music, programming and rakia.", ivanSkills, ivanVotes));
 
         userRepository.save(new User("dragan", "dragan123", "Dragan", "Ivanov",
-                "Globalization", "draganivanov08@gmail.con", "Senior Software Engineer", "Loves rakia.", ivanSkills, bisoVotes));
+                "Globalization", "Trading 212", "draganivanov08@gmail.con", "Senior Software Engineer", "Loves rakia.", ivanSkills, bisoVotes));
 
         userRepository.save(new User("martin", "martin123", "Martin", "Ivanov",
-                "Globalization", "martinivanov08@gmail.con", "Senior Software Engineer", "Loves rakia.", ivanSkills, ivanVotes));
+                "Globalization", "Trading 212", "martinivanov08@gmail.con", "Senior Software Engineer", "Loves rakia.", ivanSkills, ivanVotes));
 
         userRepository.save(new User("georgi", "georgi123", "Georgi", "Ivanov",
-                "Globalization", "georgiivanov08@gmail.con", "Senior Software Engineer", "Loves rakia.", ivanSkills, ivanVotes));
+                "Globalization", "Trading 212", "georgiivanov08@gmail.con", "Senior Software Engineer", "Loves rakia.", ivanSkills, ivanVotes));
     }
 }
 

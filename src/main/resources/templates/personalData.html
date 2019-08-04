@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>te</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Colleague recognition</title>
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel = "stylesheet"/>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link href="css/simple-sidebar.css" rel="stylesheet"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <link href="css/small-business.css" rel="stylesheet"/>
+    <style>
+            .userInfo {
+                margin-left:30px;
+            }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto nav nav-pills">
+                <li class="nav-item userInfo">
+                    <a class="navbar-brand nav-link" href="/logMeIn" role="button" >Colleague Recognition Tool</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item userInfo dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" th:text="${loggedUser.userName}">
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="/myProfile">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/data">Personal data</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/changePass">Change Password</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Peace of data</th>
+            <th scope="col">Value</th>
+            <th scope="col">Visible by other users</th>
+            <th scope="col">Reason for storing</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td >Username</td>
+            <th scope="row" th:text="${loggedUser.userName}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Standard login.</td>
+        </tr>
+        <tr>
+            <td >Password</td>
+            <th scope="row">#hidden</th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" />
+                </div>
+            </td>
+            <td>Standard login.</td>
+        </tr>
+        <tr>
+            <td >Email</td>
+            <th scope="row" th:text="${loggedUser.email}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Standard login.</td>
+        </tr>
+        <tr>
+            <td >First name</td>
+            <th scope="row" th:text="${loggedUser.firstName}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Used for better result in user search and more.</td>
+        </tr>
+        <tr>
+            <td >Last name</td>
+            <th scope="row" th:text="${loggedUser.lastName}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Used for better result in user search and more.</td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <th scope="row" th:text="${loggedUser.role}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Used by quarter gifts based on roles.</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <th scope="row" th:text="${loggedUser.department}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Used by quarter gifts based on departments.</td>
+        </tr>
+        <tr>
+            <td>Organisation</td>
+            <th scope="row" th:text="${loggedUser.organization}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Used for counting votes.</td>
+        </tr>
+        <tr>
+            <td>Skills</td>
+            <th scope="row" th:text="${loggedUser.skills}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Used within the user profile.</td>
+        </tr>
+        <tr>
+            <td>Short info</td>
+            <th scope="row" th:text="${loggedUser.shortIntro}"></th>
+            <td>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="1" />
+                </div>
+            </td>
+            <td>Used within the user profile.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; biSoft 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+</body>
+</html>

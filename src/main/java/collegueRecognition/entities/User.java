@@ -27,12 +27,15 @@ public class User {
 
     public User() {}
 
-    public User(String userName, String pass, String firstName, String lastName, String department, String email, String role, String shortIntro, List<String> skills, List<Vote> votes) {
+    public User(String userName, String pass, String firstName, String lastName, String department,
+                String organization, String email, String role, String shortIntro,
+                List<String> skills, List<Vote> votes) {
         this.userName = userName;
         this.pass = pass;
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
+        this.organization = organization;
         this.email = email;
         this.role = role;
         this.shortIntro = shortIntro;
